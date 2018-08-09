@@ -1,11 +1,5 @@
-FROM java:8
-
-RUN mkdir -p /output
-
-ADD fakeSMTP-2.1-SNAPSHOT.jar /fakeSMTP.jar
-
-VOLUME /output
-
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ADD fakeSMTP-*.jar app.jar
 EXPOSE 25
-
-ENTRYPOINT ["java","-jar","/fakeSMTP.jar","--background", "--output-dir", "/output", "--port", "25", "--start-server"]
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar", "--background", "--output-dir", "/output", "--port", "25", "--start-server"]

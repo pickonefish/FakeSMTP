@@ -122,16 +122,14 @@ Please note that it is better to have two different ports for unit and integrati
 Usage on Docker
 ---------------
 
-* Run distributed version: [Dockerfile](https://github.com/Nilhcem/FakeSMTP/blob/master/Dockerfile)
+* Run distributed version: [Dockerfile](https://github.com/pickonefish/FakeSMTP/blob/master/src/main/docker/Dockerfile)
 
-      `docker build -t="mail" github.com/Nilhcem/FakeSMTP`
-
-      `docker run -ti -p 250:25 --privileged=true -v /mail:/output mail`
+      `sudo docker run -d --name fakesmtp -p 1025:25 -v /mail:/output fakesmtp/fakesmtp`
 
 
 * Build from source
 
-Get sources from GitHub: [Dockerfile](https://github.com/Nilhcem/FakeSMTP/blob/master/src/main/docker/Dockerfile)
+Get sources from GitHub: [Dockerfile](https://github.com/pickonefish/FakeSMTP/blob/master/src/main/docker/Dockerfile)
 
     git clone https://github.com/Nilhcem/FakeSMTP
     cd FakeSMTP
